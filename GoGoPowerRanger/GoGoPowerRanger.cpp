@@ -105,12 +105,6 @@ DWORD dwGetModuleBaseAddress(DWORD dwProcessID, TCHAR * lpszModuleName)
 
 void WaitForCsGo()
 {
-	//if (hWnd > 0)
-	//{
-
-	//	hWnd = FindWindow(0, "Counter-Strike: Global Offensive"); //Atrod counter strike logulog
-
-	//}
 	if (hWnd == NULL)
 	{
 
@@ -126,7 +120,7 @@ void WaitForCsGo()
 			hWnd = FindWindowA(0, ("Counter-Strike: Global Offensive - Direct3D 9"));
 
 		}
-		std::cout << "1/4 Found something" << '\n';
+		std::cout << "1/4 Found game window" << '\n';
 		while (procesa_id == 0)
 		{
 
@@ -134,7 +128,7 @@ void WaitForCsGo()
 			GetWindowThreadProcessId(hWnd, &procesa_id); //Atrod procesa Id
 
 		}
-		std::cout << "2/4 Found something id" << '\n';
+		std::cout << "2/4 Found game process id" << '\n';
 		while (process == 0)
 		{
 
@@ -142,7 +136,7 @@ void WaitForCsGo()
 			process = OpenProcess(PROCESS_ALL_ACCESS, FALSE, procesa_id);
 
 		}
-		std::cout << "3/4 Opened something" << '\n';
+		std::cout << "3/4 Opened game process" << '\n';
 		while (ClientDLL == 0 || EngineDLL == 0)
 		{
 
@@ -157,15 +151,15 @@ void WaitForCsGo()
 			EngineDLL = dwGetModuleBaseAddress(procesa_id, EngineDLLchar);
 
 		}
-		std::cout << "4/4 Get something" << '\n';
+		std::cout << "4/4 Got game modules adresss" << '\n';
 	}
 }
 
 int main()
 {
-	std::cout << "Starting..." << '\n';
+	std::cout << "Waiting for CS:GO to start..." << '\n';
 	WaitForCsGo();
-	std::cout << "Found!!!" << '\n';
+	std::cout << "Nice !" << '\n';
 
 	while (true)
 	{
@@ -229,7 +223,6 @@ int main()
 								}
 								else if (playerhealth >= 50)
 								{
-
 									color[0] = (100 - playerhealth) * 0.02f;
 									color[1] = 1.0f;
 									color[2] = 0.0f;
@@ -241,7 +234,6 @@ int main()
 									color[1] = playerhealth * 0.02f;
 									color[2] = 0.0f;
 									color[3] = 0.8f;
-
 								}
 
 							}
