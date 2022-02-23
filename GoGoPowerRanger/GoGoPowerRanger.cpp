@@ -44,9 +44,9 @@ int ingame;
 int isplanting;
 float color[4] = { 255.0f, 255.0f, 255.0f, 0.5f };
 bool bools = true;
-DWORD dwCSPlayerResource = 52426432;
-DWORD dwLoaclPlayer = 14374364;
-DWORD m_dwEntityList = 81595996;
+DWORD dwCSPlayerResource = 52414176;
+DWORD dwLocalPlayer = 14362076;
+DWORD m_dwEntityList = 81583740;
 DWORD m_vecOrigin = 312;
 DWORD m_vecViewOffset = 264;
 DWORD m_iHealth = 256;
@@ -168,7 +168,7 @@ int main()
 		ReadProcessMemory(process, (LPCVOID)(ClientState + m_dwInGame), &ingame, 4, NULL);
 		if (ingame == 6)
 		{
-			ReadProcessMemory(process, (LPCVOID)(ClientDLL + dwLoaclPlayer), &PLocalPlayer2, 4, NULL);
+			ReadProcessMemory(process, (LPCVOID)(ClientDLL + dwLocalPlayer), &PLocalPlayer2, 4, NULL);
 			ReadProcessMemory(process, (LPCVOID)(PLocalPlayer2 + m_iTeamNum), &myteam, 4, NULL);
 			ReadProcessMemory(process, (LPCVOID)(ClientDLL + dwCSPlayerResource), &PlayerResource2, 4, NULL);
 			ReadProcessMemory(process, (LPCVOID)(PLocalPlayer2 + m_dwIndex), &index2, 4, NULL);
